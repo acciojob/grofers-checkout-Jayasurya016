@@ -15,7 +15,7 @@ function calculateTotalPrice() {
     });
 
     // 3. Select the table body
-    const tableBody = document.querySelector('table');
+    const tableBody = document.querySelector('tbody');
 
     // 4. Create a new table row for the total price
     const newRow = document.createElement('tr');
