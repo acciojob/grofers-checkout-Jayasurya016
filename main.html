@@ -1,71 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="styles.css">
-    <title>Grofers Checkout</title>
+  <link rel="stylesheet" href="styles.css">
+  <title>Grofers Checkout</title>
 </head>
 <body>
-    <table style="width: 100%">
-        <caption>
-            Monthly savings
-        </caption>
-        <thead>
-            <tr>
-                <th>Item</th>
-                <th>Price in Rs</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="item">Tea</td>
-                <td class="price">50</td>
-            </tr>
-            <tr>
-                <td class="item">Coffee</td>
-                <td class="price">70</td>
-            </tr>
-            <tr>
-                <td class="item">Biscuits</td>
-                <td class="price">100</td>
-            </tr>
-            <tr>
-                <td class="item">Rice</td>
-                <td class="price">130</td>
-            </tr>
-            <tr>
-                <td class="item">Milk</td>
-                <td class="price">50</td>
-            </tr>
-        </tbody>
-    </table>
-    
-    <script>
+  <h2>Monthly Savings</h2>
+  <table id="grocery-table" style="width: 100%">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Price in ₹</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">Tea</td>
+        <td><input type="number" class="price-input" value="50"></td>
+      </tr>
+      <tr>
+        <td class="item">Coffee</td>
+        <td><input type="number" class="price-input" value="70"></td>
+      </tr>
+      <tr>
+        <td class="item">Biscuits</td>
+        <td><input type="number" class="price-input" value="100"></td>
+      </tr>
+      <tr>
+        <td class="item">Rice</td>
+        <td><input type="number" class="price-input" value="130"></td>
+      </tr>
+      <tr>
+        <td class="item">Milk</td>
+        <td><input type="number" class="price-input" value="50"></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" id="total-cell">Total Price: ₹0</td>
+      </tr>
+    </tfoot>
+  </table>
 
-  window.addEventListener('DOMContentLoaded', () => {
-    const priceCells = document.querySelectorAll('.price');
-    let total = 0;
+  <script>
+	  function calculateTotal() {
+  const inputs = document.querySelectorAll('.price-input');
+  let total = 0;
 
-    priceCells.forEach(cell => {
-      const value = parseFloat(cell.textContent);
-      if (!isNaN(value)) {
-        total += value;
-      }
-    });
-
-    const table = document.querySelector('table');
-    const newRow = document.createElement('tr');
-    newRow.style.backgroundColor = '#e0ffe0';
-
-    const totalCell = document.createElement('td');
-    totalCell.colSpan = 2;
-    totalCell.textContent = `Total Price: ₹${total}`;
-    totalCell.style.fontWeight = 'bold';
-    totalCell.style.textAlign = 'center';
-
-    newRow.appendChild(totalCell);
-    table.querySelector('tbody').appendChild(newRow);
+  inputs.forEach(input => {
+    const value = parseFloat(input.value);
+    if (!isNaN(value)) {
+      total += value;
+    }
   });
 
-	</script>
+  document.getElementById('total-cell').textContent = `Total Price: ₹${total}`;
+}
+
+// Initial calculation
+window.addEventListener('DOMContentLoaded', () => {
+  calculateTotal();
+
+  // Recalculate whenever any input changes
+  document.querySelectorAll('.price-input').forEach(input => {
+    input.addEventListener('input', calculateTotal);
+  });
+});
+  </script>
 </body>
 </html>
