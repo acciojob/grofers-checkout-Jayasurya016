@@ -16,23 +16,23 @@
     <tbody>
       <tr>
         <td class="item">Tea</td>
-        <td><input type="number" class="price-input" value="50"></td>
+        <td><input type="number" class="price" value="50"></td>
       </tr>
       <tr>
         <td class="item">Coffee</td>
-        <td><input type="number" class="price-input" value="70"></td>
+        <td><input type="number" class="price" value="70"></td>
       </tr>
       <tr>
         <td class="item">Biscuits</td>
-        <td><input type="number" class="price-input" value="100"></td>
+        <td><input type="number" class="price" value="100"></td>
       </tr>
       <tr>
         <td class="item">Rice</td>
-        <td><input type="number" class="price-input" value="130"></td>
+        <td><input type="number" class="price" value="130"></td>
       </tr>
       <tr>
         <td class="item">Milk</td>
-        <td><input type="number" class="price-input" value="50"></td>
+        <td><input type="number" class="price" value="50"></td>
       </tr>
     </tbody>
     <tfoot>
@@ -44,7 +44,7 @@
 
   <script>
 	  function calculateTotal() {
-  const inputs = document.querySelectorAll('.price-input');
+  const inputs = document.querySelectorAll('.price');
   let total = 0;
 
   inputs.forEach(input => {
@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', () => {
   calculateTotal();
 
   // Recalculate whenever any input changes
-  document.querySelectorAll('.price-input').forEach(input => {
+  document.querySelectorAll('.price').forEach(input => {
     input.addEventListener('input', calculateTotal);
   });
 });
